@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AffiliatesHub — Découvrez et rejoignez des programmes d'affiliation</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Meta for theme color -->
+  <meta name="theme-color" content="#2563eb">
+
+  <style>
+    /* =========================
+       AffliatesHub - Styles (CSS)
+       Utilise : Inter / Poppins
+       ========================= */
+
+    :root{
+      --primary: #2563eb; /* bleu royal */
+      --primary-600: #1e4fd6;
+      --bg: #f6f8fb;      /* gris clair */
+      --card: #ffffff;
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(38,53,84,0.08);
+      --max-width: 1200px;
+    }
+
+    /* Reset / base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #ffffff);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-top:72px; /* space for fixed header */
+    }
+
+    /* Header */
+    header{
+      position:fixed;
+      top:0; left:0; right:0;
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 22px;
+      background:rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 6px rgba(16,24,40,0.06);
+      z-index:1000;
+    }
+    .container{ width:100%; max-width:var(--max-width); margin:0 auto; }
+
+    .header-inner{ display:flex; align-items:center; gap:18px; justify-content:space-between; }
+    .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--primary-600); }
+    .brand .logo{
+      width:42px;height:42px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--primary),#60a5fa);
+      color:white;font-weight:700;font-size:18px;
+      box-shadow: var(--shadow);
+    }
+    nav{ display:flex; gap:14px; align-items:center; }
+    nav a { color: #0f172a; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; }
+    nav a:hover{ background: rgba(37,99,235,0.08); color:var(--primary-600); }
+
+    .btn {
+      display:inline-flex; gap:8px; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer; border: none;
+      background: linear-gradient(90deg,var(--primary),#3b82f6);
+      color:white; box-shadow: 0 8px 20px rgba(37,99,235,0.16);
+    }
+    .btn.ghost{
+      background:transparent; color:var(--primary-600); box-shadow:none; border:1px solid rgba(37,99,235,0.12);
+    }
+    .btn:active{ transform:translateY(1px) }
+
+    /* Hero */
+    .hero{
+      padding:56px 22px 36px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+    .hero h1{
+      font-size: clamp(28px, 4.5vw, 44px);
+      margin:0 0 12px;
+      letter-spacing:-0.02em;
+      color:#091527;
+    }
+    .hero p{
+      margin:0 0 20px; color:var(--muted); font-size:16px;
+    }
+
+    .cta-row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+
+    /* Spotlight card */
+    .spotlight{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+      border-radius:16px; padding:18px; box-shadow: var(--shadow);
+    }
+    .stats{ display:flex; gap:12px; margin-top:10px; }
+    .stat{ background:rgba(37,99,235,0.06); padding:10px 12px; border-radius:10px; font-weight:700; color:var(--primary-600); }
+
+    /* Programs grid */
+    main{ padding:28px 22px 80px; }
+    .section{
+      max-width:var(--max-width); margin:0 auto 28px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow: var(--shadow);
+      display:flex; gap:12px; align-items:center;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(16,24,40,0.08); }
+
+    .card .logo-wrap{
+      width:64px; height:64px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,#f1f5f9,#ffffff);
+      flex-shrink:0;
+      border:1px solid rgba(15,23,42,0.04);
+    }
+    .card h3{ margin:0; font-size:16px; }
+    .card p{ margin:6px 0 0; font-size:13px; color:var(--muted); }
+    .card .meta{ margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+
+    .stars{ color:#fbbf24; font-size:14px; }
+    .small-btn{ padding:8px 10px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; border:none; background:linear-gradient(90deg,var(--primary),#3b82f6); color:white; }
+
+    /* Detail view */
+    .detail{
+      background:var(--card); border-radius:14px; padding:20px; box-shadow: var(--shadow);
+    }
+    .detail .hero-detail{ display:flex; gap:18px; align-items:flex-start; }
+    .detail h2{ margin:0 0 6px; }
+    .badge{ font-size:13px; padding:6px 10px; border-radius:999px; background:rgba(37,99,235,0.08); color:var(--primary-600); font-weight:700; }
+
+    /* Info grid */
+    .info-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px; }
+
+    .steps{ margin-top:14px; padding-left:18px; }
+    .steps li{ margin:8px 0; color:var(--muted); }
+
+    /* Footer */
+    footer{ padding:28px 22px; text-align:center; color:var(--muted); font-size:14px; border-top:1px solid rgba(15,23,42,0.03); background:transparent; }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero-grid{ grid-template-columns:1fr; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .info-grid{ grid-template-columns: 1fr; }
+      .card .meta{ align-items:flex-start; }
+    }
+    @media (max-width:640px){
+      .grid{ grid-template-columns: 1fr; }
+      header{ padding:10px 14px; }
+      body{ padding-top:70px; }
+    }
+
+    /* Utility classes */
+    .muted{ color:var(--muted); font-size:13px; }
+    a.link-muted{ color:var(--primary-600); text-decoration:none; font-weight:700; }
+
+    /* Smooth scroll */
+    html{ scroll-behavior: smooth; }
+
+  </style>
+</head>
+<body>
+  <!-- Fixed header -->
+  <header>
+    <div class="container header-inner" role="navigation" aria-label="Main navigation">
+      <a class="brand" href="/" id="brand-link" data-router>
+        <div class="logo" aria-hidden="true">AH</div>
+        <div>
+          <div style="font-weight:700">AffiliatesHub</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Maximisez vos revenus en ligne</div>
+        </div>
+      </a>
+
+      <nav>
+        <a href="/" data-router>Accueil</a>
+        <a href="/what-is-affiliation" data-router>C'est quoi l'affiliation ?</a>
+        <a href="#programs" id="jump-programs">Programmes</a>
+        <button class="btn" id="cta-top">Commencer Maintenant</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div>
+        <h1 id="hero-title">Maximisez Vos Revenus en Ligne</h1>
+        <p>Rejoignez les meilleurs programmes d'affiliation gratuitement. Comparez les commissions, voyez les avantages et inscrivez-vous en un clic.</p>
+
+        <div class="cta-row">
+          <button class="btn" id="cta-main">Commencer Maintenant</button>
+          <a class="btn ghost" href="/what-is-affiliation" data-router>C'est quoi l'affiliation ?</a>
+        </div>
+
+        <div class="stats" style="margin-top:20px">
+          <div class="stat">+3 Programmes</div>
+          <div class="stat">Inscription gratuite</div>
+        </div>
+      </div>
+
+      <aside class="spotlight" aria-label="Spotlight">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div style="width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#60a5fa,#2563eb);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">A</div>
+          <div>
+            <div style="font-weight:700">AffiliatesHub</div>
+            <div class="muted" style="font-size:13px">Dashboard léger pour explorer et rejoindre des programmes d'affiliation.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="font-size:13px;color:var(--muted)">Astuce :</div>
+          <div style="font-weight:700;margin-top:6px">Ajoute ton lien d'affiliation à chaque programme après inscription.</div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="btn small" id="view-programs">Voir Programmes</button>
+          <button class="btn ghost small" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">Contact</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Programmes Section -->
+    <section class="section" id="programs" aria-labelledby="programs-title">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <h2 id="programs-title" style="margin:0">Programmes Populaires</h2>
+        <div class="muted" style="font-size:14px">Sélectionnée pour commencer rapidement</div>
+      </div>
+
+      <div class="grid" id="programs-grid" role="list">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- Detail container (renders when a program is selected) -->
+    <section class="section" id="detail-section" style="display:none;">
+      <!-- content injected by JS -->
+    </section>
+
+    <!-- "What is Affiliation" static page -->
+    <section class="section" id="affiliation-page" style="display:none;">
+      <div class="detail">
+        <h2>C'est quoi l'affiliation ?</h2>
+        <p class="muted">L'affiliation est un modèle où un éditeur (tu) promeut des produits ou services d'un marchand et reçoit une commission pour les actions validées (ventes, inscriptions, etc.).</p>
+
+        <div class="info-grid" style="margin-top:14px">
+          <div>
+            <h4>Comment ça marche ?</h4>
+            <ol class="muted">
+              <li>Tu rejoins un programme d'affiliation.</li>
+              <li>Tu obtiens un lien d'affiliation unique.</li>
+              <li>Tu partages le lien (site, réseaux, email).</li>
+              <li>Tu gagnes une commission quand quelqu'un convertit via ton lien.</li>
+            </ol>
+          </div>
+          <div>
+            <h4>Conseils rapides</h4>
+            <ul class="muted">
+              <li>Sois transparent avec ton audience.</li>
+              <li>Choisis des produits/services pertinents.</li>
+              <li>Analyse les taux de conversion et optimise.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top:16px" class="muted">Retour à la liste : <a class="link-muted" href="/" data-router>Voir Programmes</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="max-width:900px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="text-align:left">
+            <strong>AffiliatesHub</strong><div class="muted" style="margin-top:6px">Votre hub centralisé pour les programmes d'affiliation.</div>
+          </div>
+          <div class="muted">© <span id="year"></span> AffiliatesHub — Tous droits réservés.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Embeded programs data (JSON) -> backend simulation -->
+  <script id="programs-data" type="application/json">
+    {
+      "programs": [
+        {
+          "id": "1xbet",
+          "slug": "programme-1xbet",
+          "title": "1xBet Affiliates",
+          "logo": "",
+          "short": "Programme de parrainage pour les paris sportifs.",
+          "rating": 4.2,
+          "commission": "30-50% sur les pertes des joueurs",
+          "details": "1xBet Affiliates propose un modèle de commission sur les pertes des joueurs apportés. Outils marketing inclus : bannières, liens, API de suivi et tableaux de bord en temps réel.",
+          "advantages": ["Tracking temps réel","Large choix de bannières","Support dédié"],
+          "signup": "https://example.com/1xbet-affiliate?ref=signup"
+        },
+        {
+          "id": "amazon",
+          "slug": "programme-amazon-associates",
+          "title": "Amazon Associates",
+          "logo": "",
+          "short": "Promouvez des produits et gagnez des commissions.",
+          "rating": 4.6,
+          "commission": "Jusqu'à 10% sur les achats",
+          "details": "Amazon Associates permet de créer des liens vers des millions de produits. Commission selon catégorie produit, accessible mondialement.",
+          "advantages": ["Confiance du consommateur","Catalogue immense","Paiements fiables"],
+          "signup": "https://affiliate-program.amazon.com/"
+        },
+        {
+          "id": "clickbank",
+          "slug": "programme-clickbank",
+          "title": "ClickBank",
+          "logo": "",
+          "short": "Plateforme de produits numériques à fort taux de commission.",
+          "rating": 4.4,
+          "commission": "Jusqu'à 75% par vente",
+          "details": "ClickBank est spécialisé dans les produits numériques (ebooks, formations). Très attractif pour les affiliés grâce aux commissions élevées.",
+          "advantages": ["Commissions élevées","Large catalogue numérique","Paiements hebdomadaires"],
+          "signup": "https://www.clickbank.com/affiliate-signup"
+        }
+      ]
+    }
+  </script>
+
+  <script>
+    /* =========================
+       AffiliatesHub - JavaScript (vanilla)
+       - charge les programmes depuis le JSON ci-dessus
+       - rend la grille, détails, navigation SPA (pushState + hash fallback)
+       - commentaires inclus pour faciliter la personnalisation
+       ========================= */
+
+    // --- Utilitaires ---
+    const el = sel => document.querySelector(sel);
+    const elAll = sel => document.querySelectorAll(sel);
+
+    // Parse embedded JSON programs
+    const programsJSON = JSON.parse(document.getElementById('programs-data').textContent);
+    const programs = programsJSON.programs || [];
+
+    // DOM refs
+    const programsGrid = el('#programs-grid');
+    const detailSection = el('#detail-section');
+    const affiliationPage = el('#affiliation-page');
+    const yearSpan = el('#year');
+
+    // Set current year in footer
+    yearSpan.textContent = new Date().getFullYear();
+
+    // Simple logo generator (SVG) fallback if no logo provided
+    function logoSVG(title){
+      const initials = title.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+      const bg1 = '#2563eb';
+      const bg2 = '#60a5fa';
+      // Base64 inline SVG
+      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='${bg2}'/><stop offset='1' stop-color='${bg1}'/></linearGradient></defs><rect rx='18' width='100%' height='100%' fill='url(#g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, Poppins, sans-serif' font-size='44' fill='white' font-weight='700'>${initials}</text></svg>`;
+      return 'data:image/svg+xml;base64,'+btoa(svg);
+    }
+
+    // Render stars (rating out of 5)
+    function renderStars(rating){
+      const rounded = Math.round(rating * 2) / 2; // support half stars
+      let html = '';
+      for(let i=1;i<=5;i++){
+        if(i <= Math.floor(rounded)) html += '<i class="fa-solid fa-star"></i>';
+        else if(i - 0.5 === rounded) html += '<i class="fa-solid fa-star-half-stroke"></i>';
+        else html += '<i class="fa-regular fa-star"></i>';
+      }
+      return `<span class="stars" aria-hidden="true">${html}</span> <span class="muted" style="font-size:13px;margin-left:6px">${rating.toFixed(1)}</span>`;
+    }
+
+    // Render program card
+    function cardHTML(p){
+      const logo = p.logo && p.logo.length ? p.logo : logoSVG(p.title);
+      return `
+        <article class="card" role="listitem" data-slug="${p.slug}">
+          <div class="logo-wrap">
+            <img src="${logo}" alt="${p.title} logo" style="width:60px;height:60px;border-radius:8px;object-fit:cover" loading="lazy">
+          </div>
+          <div>
+            <h3>${p.title}</h3>
+            <p>${p.short}</p>
+          </div>
+          <div class="meta">
+            <div>${renderStars(p.rating)}</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="small-btn" data-action="signup" data-id="${p.id}">S'inscrire</button>
+              <button class="small-btn" data-action="details" data-slug="${p.slug}" style="background:transparent;color:var(--primary-600);border:1px solid rgba(37,99,235,0.08)">Détails</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Populate grid
+    function renderProgramsGrid(){
+      programsGrid.innerHTML = programs.map(cardHTML).join('');
+      // Attach event listeners for buttons inside cards
+      programsGrid.querySelectorAll('[data-action]').forEach(btn=>{
+        btn.addEventListener('click', e=>{
+          const action = btn.getAttribute('data-action');
+          if(action === 'signup'){
+            const pid = btn.getAttribute('data-id');
+            const program = programs.find(x => x.id === pid);
+            if(program){
+              // open partner signup in new tab
+              window.open(program.signup, '_blank', 'noopener');
+            }
+          } else if(action === 'details'){
+            const slug = btn.getAttribute('data-slug');
+            navigateToProgram(slug);
+          }
+        });
+      });
+
+      // Also make cards clickable to open details
+      programsGrid.querySelectorAll('.card').forEach(c=>{
+        c.addEventListener('click', (e)=>{
+          // avoid if clicking a button
+          if(e.target.closest('button')) return;
+          const slug = c.getAttribute('data-slug');
+          navigateToProgram(slug);
+        });
+      });
+    }
+
+    // Render program detail view
+    function renderProgramDetail(slug){
+      const p = programs.find(x => x.slug === slug);
+      if(!p) return renderNotFound();
+
+      detailSection.style.display = 'block';
+      affiliationPage.style.display = 'none';
+      const logo = p.logo && p.logo.length ? p.logo : logoSVG(p.title);
+      detailSection.innerHTML = `
+        <div class="detail">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div class="hero-detail">
+              <div style="width:84px;height:84px;border-radius:12px;overflow:hidden;border:1px solid rgba(15,23,42,0.04)">
+                <img src="${logo}" alt="${p.title} logo" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+              </div>
+              <div>
+                <h2>${p.title}</h2>
+                <div class="muted" style="margin-top:6px">${p.short}</div>
+                <div style="margin-top:8px">${renderStars(p.rating)}</div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+              <div class="badge">Commission : ${p.commission}</div>
+              <div style="display:flex;gap:8px">
+                <button class="btn" id="signup-external">Aller vers l'inscription</button>
+                <button class="btn ghost" id="back-to-list">Retour</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px" class="info-grid">
+            <div>
+              <h4>Description</h4>
+              <p class="muted">${p.details}</p>
+            </div>
+            <div>
+              <h4>Avantages</h4>
+              <ul class="muted">
+                ${p.advantages.map(a => `<li>${a}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4>Étapes pour s'inscrire</h4>
+            <ol class="steps">
+              <li>Cliquer sur "Aller vers l'inscription".</li>
+              <li>Créer un compte (si nécessaire) et récupérer votre lien d'affiliation.</li>
+              <li>Partager votre lien et suivre vos performances depuis le tableau de bord du partenaire.</li>
+            </ol>
+          </div>
+        </div>
+      `;
+
+      // button handlers
+      el('#signup-external').addEventListener('click', ()=>{
+        window.open(p.signup, '_blank', 'noopener');
+      });
+      el('#back-to-list').addEventListener('click', ()=>{
+        navigateHome();
+      });
+
+      // For accessibility, focus detail section
+      detailSection.scrollIntoView({behavior:'smooth'});
+    }
+
+    function renderNotFound(){
+      detailSection.style.display = 'block';
+      affiliationPage.style.display = 'none';
+      detailSection.innerHTML = `<div class="detail"><h2>Programme introuvable</h2><p class="muted">Le programme demandé est introuvable. <a class="link-muted" href="/" data-router>Retour à la liste</a></p></div>`;
+    }
+
+    // Navigation helpers (supports pushState and hash fallback)
+    function navigateToProgram(slug){
+      // Friendly URL example: /programme-1xbet
+      const program = programs.find(p => p.slug === slug);
+      if(!program) { renderNotFound(); return; }
+
+      const path = `/${program.slug}`;
+      try {
+        history.pushState({page:'program', slug:slug}, program.title, path);
+      } catch(e){
+        // fallback to hash route if pushState fails
+        location.hash = `#programme/${slug}`;
+      }
+      renderProgramDetail(slug);
+      // hide grid to emphasize detail
+      window.scrollTo({top:document.querySelector('#programs').offsetTop - 70, behavior:'smooth'});
+    }
+
+    function navigateHome(){
+      try {
+        history.pushState({page:'home'}, 'AffiliatesHub', '/');
+      } catch(e){
+        location.hash = '';
+      }
+      detailSection.style.display = 'none';
+      affiliationPage.style.display = 'none';
+      // scroll to programs
+      document.getElementById('programs').scrollIntoView({behavior:'smooth'});
+    }
+
+    function navigateAffiliationPage(){
+      try {
+        history.pushState({page:'affiliation'}, 'Affiliation', '/what-is-affiliation');
+      } catch(e){
+        location.hash = '#what-is-affiliation';
+      }
+      detailSection.style.display = 'none';
+      affiliationPage.style.display = 'block';
+      document.querySelector('#affiliation-page').scrollIntoView({behavior:'smooth'});
+    }
+
+    // Click handlers for header/nav (data-router)
+    document.querySelectorAll('[data-router]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const href = this.getAttribute('href') || '/';
+        if(href === '/' || href === '') navigateHome();
+        else if(href.includes('what-is-affiliation') || href.includes('affiliation')) navigateAffiliationPage();
+        else {
+          // attempt find program by slug path like /programme-1xbet
+          const slug = href.replace(/^\//, '');
+          navigateToProgram(slug);
+        }
+        return false;
+      });
+    });
+
+    // CTA buttons
+    el('#cta-main').addEventListener('click', ()=>document.getElementById('programs').scrollIntoView({behavior:'smooth'}));
+    el('#cta-top').addEventListener('click', ()=>document.getElementById('programs').scrollIntoView({behavior:'smooth'}));
+    el('#view-programs').addEventListener('click', ()=>document.getElementById('programs').scrollIntoView({behavior:'smooth'}));
+
+    // Handle browser navigation (back/forward)
+    window.addEventListener('popstate', (ev)=>{
+      const state = ev.state;
+      if(!state){
+        // default to home
+        detailSection.style.display = 'none';
+        affiliationPage.style.display = 'none';
+        return;
+      }
+      if(state.page === 'program') renderProgramDetail(state.slug);
+      else if(state.page === 'affiliation') { detailSection.style.display='none'; affiliationPage.style.display='block'; }
+      else { detailSection.style.display='none'; affiliationPage.style.display='none'; }
+    });
+
+    // On page load: check URL to support direct linking
+    function handleInitialRoute(){
+      const path = location.pathname.replace(/^\//,'');
+      const hash = location.hash.replace(/^#/,'');
+      if(path && path !== 'index.html'){
+        // path like programme-1xbet or what-is-affiliation
+        if(path.startsWith('programme') || programs.some(p => p.slug === path)){
+          // find slug
+          const slugCandidate = programs.some(p => p.slug === path) ? path : path.split('/').pop();
+          navigateToProgram(slugCandidate);
+          return;
+        } else if(path.includes('what-is-affiliation') || path.includes('affiliation')){
+          navigateAffiliationPage();
+          return;
+        }
+      }
+      if(hash){
+        // fallback hash routing: #programme/slug or #what-is-affiliation
+        if(hash.startsWith('programme/')){
+          const slug = hash.split('/')[1];
+          navigateToProgram(slug);
+          return;
+        } else if(hash.includes('what-is-affiliation')){
+          navigateAffiliationPage();
+          return;
+        }
+      }
+      // default: show home grid
+      detailSection.style.display = 'none';
+      affiliationPage.style.display = 'none';
+    }
+
+    // Init
+    (function init(){
+      renderProgramsGrid();
+      handleInitialRoute();
+
+      // Accessibility: allow Enter to activate card buttons
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' && document.activeElement && document.activeElement.classList.contains('card')){
+          const slug = document.activeElement.getAttribute('data-slug');
+          if(slug) navigateToProgram(slug);
+        }
+      });
+    })();
+
+    /* 
+      ===== NOTES & EXTENSIONS =====
+      - Pour ajouter un programme: mettre à jour le JSON dans <script id="programs-data"> ou
+        remplacer la source par une requête fetch('/programs.json') si tu veux un vrai backend.
+      - Pour utiliser un backend réel: créer /programs.json REST endpoint, remplacer programsJSON par fetch et appeler renderProgramsGrid() après fetch.
+      - Pour le routage côté serveur (URL propre /programme-xxx), configure le serveur pour renvoyer index.html pour toutes les routes (SPA fallback).
+      - Compression images: utilise WebP ou services CDN si tu ajoutes des logos lourds.
+    */
+
+  </script>
+</body>
+</html>
