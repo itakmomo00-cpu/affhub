@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "u-admin",
+      "email": "admin@example.com",
+      "passwordHash": "$2a$10$JtY4hEo1s6vVJ1vG1iZcUuTQb3YlNfQ8r0Q0HkQO0n5xY0f6Jm3jG", 
+      "phone": "+212600000000",
+      "phoneVerified": true,
+      "role": "admin",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "p-001",
+      "name": { "en": "Neon Headset", "fr": "Casque Néon" },
+      "type": "physical",
+      "price": 7999,
+      "currency": "USD",
+      "rating": 4.6,
+      "images": ["/assets/images/headset.jpg"],
+      "description": { "en": "Immersive RGB gaming headset.", "fr": "Casque gaming RGB immersif." }
+    },
+    {
+      "id": "p-002",
+      "name": { "en": "Retro Pixel Art Pack", "fr": "Pack Pixel Art Rétro" },
+      "type": "digital",
+      "price": 1499,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": ["/assets/images/pixelpack.jpg"],
+      "description": { "en": "High-res pixel art sprites.", "fr": "Sprites pixel art haute résolution." }
+    },
+    {
+      "id": "p-003",
+      "name": { "en": "Gift Card $25", "fr": "Carte Cadeau 25$" },
+      "type": "gift",
+      "price": 2500,
+      "currency": "USD",
+      "rating": 4.5,
+      "images": ["/assets/images/giftcard.jpg"],
+      "description": { "en": "Gift credit for the store.", "fr": "Crédit cadeau pour la boutique." }
+    }
+  ],
+  "orders": [],
+  "carts": {}
+}
+
