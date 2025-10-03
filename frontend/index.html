@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neon Shop</title>
+    <link rel="stylesheet" href="/assets/css/neon.css" />
+    <script type="module" src="/assets/js/app.js" defer></script>
+  </head>
+  <body class="theme-dark">
+    <header class="site-header">
+      <div class="logo">NEON<span>SHOP</span></div>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/products.html">Products</a>
+        <a href="/giftcards.html">Gift Cards</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <input id="search" aria-label="Search" placeholder="Search" />
+        <button id="lang-toggle" aria-label="Language">EN</button>
+        <a href="/account.html" aria-label="Account" class="icon">👤</a>
+        <a href="/cart.html" aria-label="Cart" class="icon">🛒<span id="cart-count" class="badge">0</span></a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content glass">
+        <h1 data-i18n="hero_title">Buy Now</h1>
+        <p data-i18n="hero_sub">Dark neon gamer gear and digital goods.</p>
+        <a class="btn btn-neon" href="/products.html" data-i18n="cta_buy">Buy Now</a>
+      </div>
+    </section>
+
+    <main class="container">
+      <h2 data-i18n="featured">Featured</h2>
+      <div id="featured" class="product-grid"></div>
+    </main>
+
+    <footer class="site-footer">© <span id="year"></span> Neon Shop</footer>
+  </body>
+  </html>
+
